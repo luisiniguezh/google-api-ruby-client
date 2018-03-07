@@ -35,7 +35,7 @@ module Google
     # @return [Logger]
     def self.default_logger
       logger = Logger.new($stdout)
-      logger.level = Logger::WARN
+      logger.level = Logger::ERROR
       logger
     end
 
@@ -45,14 +45,15 @@ module Google
     #
     # @return [Logger]
     def self.rails_logger
-      if 'true' == ENV.fetch('GOOGLE_API_USE_RAILS_LOGGER', 'true') &&
-          defined?(::Rails) &&
-          ::Rails.respond_to?(:logger) &&
-          !::Rails.logger.nil?
-        ::Rails.logger
-      else
-        nil
-      end
+      nil
+      # if 'true' == ENV.fetch('GOOGLE_API_USE_RAILS_LOGGER', 'true') &&
+      #     defined?(::Rails) &&
+      #     ::Rails.respond_to?(:logger) &&
+      #     !::Rails.logger.nil?
+      #   ::Rails.logger
+      # else
+      #   nil
+      # end
     end
   end
 end
