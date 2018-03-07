@@ -45,15 +45,15 @@ module Google
     #
     # @return [Logger]
     def self.rails_logger
-      nil
-      # if 'true' == ENV.fetch('GOOGLE_API_USE_RAILS_LOGGER', 'true') &&
-      #     defined?(::Rails) &&
-      #     ::Rails.respond_to?(:logger) &&
-      #     !::Rails.logger.nil?
-      #   ::Rails.logger
-      # else
-      #   nil
-      # end
+      # nil
+      if 'true' == ENV.fetch('GOOGLE_API_USE_RAILS_LOGGER', 'true') &&
+          defined?(::Rails) &&
+          ::Rails.respond_to?(:logger) &&
+          !::Rails.logger.nil?
+        ::Rails.logger
+      else
+        nil
+      end
     end
   end
 end
